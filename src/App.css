@@ -137,16 +137,17 @@ body {
   font-size: 18px;
   font-weight: bold;
   color: white;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  background: linear-gradient(135deg, #18c7e2, #009bb3);
   border: none;
   border-radius: 25px;
   cursor: pointer;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
   outline: none;
 }
 .restart:hover{
-  background: linear-gradient(135deg, #feb47b, #ff7e5f); /* Reverse gradient */
+  transition: all 0.4s ease;
+  background: linear-gradient(135deg, #009bb3, #18c7e2); /* Reverse gradient */
   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   transform: translateY(-3px)
 }
