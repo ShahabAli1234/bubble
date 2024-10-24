@@ -1,38 +1,156 @@
-.App {
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif; /* Use a modern font */
+  background: linear-gradient(135deg, #f0f4fd, #d0e1f9);/* Light background to make the game stand out */
+}
+
+.main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 800px;
+  height: 450px;
+  border-radius: 20px;
+  box-shadow: 0px 10px 25px rgba(0, 0, 0, 0.2); /* Adds depth */
+  overflow: hidden;
+}
+
+.top {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  height: 80px; /* Increased height for breathing space */
+  background: linear-gradient(135deg, #d1dfff, #9bc4fd);
+}
+
+.top h2, .top p {
+  color: rgb(0, 0, 0);
+  margin: 5px 0;
+}
+
+.score, .hiScore, .time, .hit {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.appName {
+  font-family: "Rubik Bubbles", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  text-align: center;
+  font-size: 2rem; /* Make the game name more prominent */
+  font-weight: bold;
+  margin-top: 10px;
+  color: rgb(15, 93, 165) !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.time, .hit, .score, .hiScore {
+  width: 100px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.bottom {
+  background-color: #ffffff;
+  height: calc(100% - 80px); /* Adjust for the top height */
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.bubbles{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.bottom p {
+  font-size: 1.2rem;
+  color: #333;
+}
+.bubble {
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle at 30% 30%, #18c7e2, #009bb3); /* Softer gradient for depth */
   color: white;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 
+    inset 3px 3px 6px rgba(91, 128, 140, 0.3),  /* Softer inner shadow */
+    3px 3px 6px rgba(255, 255, 255, 0.2);        /* Light outer shadow for subtle depth */
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Light text shadow for readability */
+  position: relative;
+  cursor: pointer;
 }
 
-.App-link {
-  color: #61dafb;
+/* Light, subtle highlight at the top-left */
+.bubble::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(255, 255, 255, 0.3); /* Softer highlight */
+  border-radius: 50%;
+  opacity: 0.5;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Subtle bottom-right reflection */
+.bubble::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  right: 3px;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(255, 255, 255, 0.15); /* Softer reflection */
+  border-radius: 50%;
+  opacity: 0.5;
+}
+
+.over{
+  display: none;
+  justify-content:center;
+  align-items: center;
+  flex-direction: column;
+  text-align: left;
+  height: 100%;
+  gap: 10px;
+}
+.restart{
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background: linear-gradient(135deg, #ff7e5f, #feb47b);
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  outline: none;
+}
+.restart:hover{
+  background: linear-gradient(135deg, #feb47b, #ff7e5f); /* Reverse gradient */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+  transform: translateY(-3px)
+}
+.restart:active{
+  transform: translateY(1px); /* Button press effect */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
